@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Purchase Process</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div id="loading-background">
+            <!-- Spinner -->
+            <img src="{{ url_for('static', filename='img/Ninga_Grow_Logo_Black_v3.png') }}" class="spinner" alt="Loading...">
+        </div>
+    </div>
+
+    <div class="container" id="main-content" style="display: none;">
+        <!-- Process Categories -->
+        <div class="row">
+            <div class="col">
+                <div class="process-category active">Choosing</div>
+            </div>
+            <div class="col">
+                <div class="process-category">Data</div>
+            </div>
+            <div class="col">
+                <div class="process-category">Paying</div>
+            </div>
+        </div>
+
+        <!-- Product Description Section -->
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="product-description">
+                    <h2 class="text-center">1 Month Subscription</h2>
+                    <hr>
+                    <form action="/confirm" method="POST">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-method">Payment Method</label>
+                            <select class="form-control" id="payment-method" name="payment_method">
+                                <option value="paypal">PayPal</option>
+                                <option value="credit_card">Credit Card</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" name="price" value="$1000" readonly>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Next</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Simulate loading time
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 2000); // 2 seconds
+        });
+    </script>
+</body>
+</html>
